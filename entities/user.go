@@ -1,6 +1,10 @@
 package entities
 
-import "github.com/rs/xid"
+import (
+	"fmt"
+
+	"github.com/rs/xid"
+)
 
 type User struct {
 	userID string
@@ -15,4 +19,8 @@ func (user *User) GetID() string {
 
 func NewUser(name, email, phone string) *User {
 	return &User{userID: xid.New().String(), name: name, email: email, phone: phone}
+}
+
+func (user *User) UserCreationMessage() string {
+	return fmt.Sprintf("UserID: %s\n Name: %s\n Email:%s\nPhone:%s\n", user.userID, user.name, user.email, user.phone)
 }
