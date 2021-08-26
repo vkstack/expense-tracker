@@ -4,7 +4,7 @@ import (
 	"errors"
 
 	"github.com/vkstack/expense-tracker/entities"
-	"github.com/vkstack/expense-tracker/interfaces/repository"
+	"github.com/vkstack/expense-tracker/interfaces/irepository"
 )
 
 var (
@@ -13,6 +13,12 @@ var (
 
 type groupRepository struct {
 	groups map[string]*entities.Group
+}
+
+func NewGroupRepository() irepository.IGroupRepo {
+	return &groupRepository{
+		groups: make(map[string]*entities.Group),
+	}
 }
 
 func (groupRepo *groupRepository) SaveGroup(group *entities.Group) (bool, error) {
@@ -45,10 +51,4 @@ func (groupRepo *groupRepository) GetMembers(groupID string) []*entities.User {
 		return group.GetMembers()
 	}
 	return nil
-}
-
-func NewGroupRepository() repository.IGroupRepo {
-	return &groupRepository{
-		groups: make(map[string]*entities.Group),
-	}
 }

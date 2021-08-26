@@ -2,6 +2,7 @@ package entities
 
 import (
 	"fmt"
+	"strings"
 
 	"github.com/rs/xid"
 )
@@ -54,4 +55,12 @@ func (group *Group) CreationMessage() string {
 		idx++
 	}
 	return message
+}
+
+func (group *Group) String() string {
+	var userNames []string
+	for _, user := range group.members {
+		userNames = append(userNames, user.name)
+	}
+	return `----------------------------------------------------------------------------------------------\n` + fmt.Sprintf("Groups \t%s(%s)\n created\nMembers:\t%s.\n", group.name, group.groupID, strings.Join(userNames, ",")) + `----------------------------------------------------------------------------------------------\n`
 }

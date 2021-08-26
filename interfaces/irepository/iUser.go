@@ -1,4 +1,4 @@
-package repository
+package irepository
 
 import "github.com/vkstack/expense-tracker/entities"
 

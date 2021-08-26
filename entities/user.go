@@ -24,3 +24,7 @@ func NewUser(name, email, phone string) *User {
 func (user *User) UserCreationMessage() string {
 	return fmt.Sprintf("UserID: %s\n Name: %s\n Email:%s\nPhone:%s\n", user.userID, user.name, user.email, user.phone)
 }
+
+func (user *User) String() string {
+	return `----------------------------------------------------------------------------------------------\n` + fmt.Sprintf("User \t%s(%s)\n created\n", user.name, user.userID) + `----------------------------------------------------------------------------------------------\n`
+}

@@ -1,5 +1,5 @@
 package iodevice
 
 type IOut interface {
-	Write(text string)
+	Write(text interface{})
 }
